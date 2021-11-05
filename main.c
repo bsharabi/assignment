@@ -6,9 +6,8 @@
 int main()
 {
 	int num1, num2;
-	printf("Enter two numbers to set a range\n");
-	scanf("%d %d", &num1, &num2);
-	printf("Range is [%d , %d].\n", num1, num2);
+	scanf("%d", &num1);
+	scanf("%d", &num2);
 	int chooise = 4;
 	while (chooise)
 	{
