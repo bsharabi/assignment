@@ -1,5 +1,8 @@
 FLAGS =-Wall -g
-CC = gcc #if we want to change compiler
+CC =gcc #if we want to change compiler
+LibLoop=basicClassification.o advancedClassificationLoop.o 
+LibRec=basicClassification.oadvancedClassificationRecursion.o
+
 all: recursived recursives loopd loops mains maindloop maindrec
 
 #static
@@ -20,14 +23,14 @@ recursived:libclassrec.so
 #create dynamic lib
 loopd:libclassloops.so
 
-libclassloops.a:basicClassification.o advancedClassificationLoop.o 
-	ar -rcs libclassloops.a basicClassification.o advancedClassificationLoop.o
-libclassrec.a:basicClassification.o advancedClassificationRecursion.o
-	ar -rcs libclassrec.a basicClassification.o advancedClassificationRecursion.o  
-libclassrec.so:basicClassification.o advancedClassificationRecursion.o
-	$(CC) $(FLAGS) -shared -o libclassrec.so basicClassification.o advancedClassificationRecursion.o
-libclassloops.so:basicClassification.o advancedClassificationLoop.o
-	$(CC) $(FLAGS) -shared -o libclassloops.so basicClassification.o advancedClassificationLoop.o
+libclassloops.a:$(LibLoop) 
+	ar -rcs libclassloops.a $(LibLoop)
+libclassrec.a:$(LibRec)
+	ar -rcs libclassrec.a $(LibRec)  
+libclassrec.so:$(LibRec)
+	$(CC) $(FLAGS) -shared -o libclassrec.so $(LibRec)
+libclassloops.so:$(LibLoop)
+	$(CC) $(FLAGS) -shared -o libclassloops.so $(LibLoop)
 
 basicClassification.o: basicClassification.c NumClass.h
 	$(CC) $(FLAGS) -c basicClassification.c 
