@@ -1,7 +1,9 @@
 FLAGS =-Wall -g
+
 CC =gcc #if we want to change compiler
 LibLoop=basicClassification.o advancedClassificationLoop.o 
 LibRec=basicClassification.oadvancedClassificationRecursion.o
+
 
 all: recursived recursives loopd loops mains maindloop maindrec
 
