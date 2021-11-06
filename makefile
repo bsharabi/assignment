@@ -1,5 +1,6 @@
 FLAGS =-Wall -g
 CC = gcc #if we want to change compiler
+
 all: recursived recursives loopd loops mains maindloop maindrec
 
 #static
