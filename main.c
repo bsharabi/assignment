@@ -1,44 +1,35 @@
 #include <stdio.h>
-#include <math.h>
-#include "NumClass.h"
-#define true 1
-#define false 0
-int main()
-{
-	int num1, num2;
-	scanf("%d %d", &num1,&num2);
-	int chooise = 4;
-	while (chooise)
-	{
-		switch (chooise)
+#include "my_mat.h"
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+#define INFINITY 9999
+#define V 10
+int distance[V][V] = { 0 };
+int graph[V][V] = { 0 };
+int visited[V] = { 0 };
+int main() {
+	int from, to;
+	char ch;
+	while (1) {
+		ch = getchar();
+		switch (ch)
 		{
-		case 1:
-			printf("\nThe Strong numbers are:");
+		case 'A':
+			fiilGraph();
+			Initialize();
 			break;
-		case 2:
-			printf("\nThe Prime numbers are:");
+		case 'B':
+			scanf("%d %d", &from, &to);
+			for(int i=0;i<V;i++)
+			visited[i]=0;
+			printf(Route(from, to) ? "True\n" : "False\n");
 			break;
-		case 3:
-			printf("\nThe Palindromes are:");
+		case 'C':
+			scanf("%d %d", &from, &to);
+			FloydWarshall(V);
+			printf((distance[from][to] >= INFINITY || distance[from][to] == 0) ? "-1\n" : "%d\n", distance[from][to]);
 			break;
-		case 4:
-			printf("The Armstrong numbers are:");
-			break;
+		case 'D':
+			return 0;
 		}
-		for (int i = num1; i <= num2; i++)
-		{
-			if (chooise == 4 && isArmstrong(i))
-				printf(" %d", i);
-			else if (chooise == 3 && isPalindrome(i))
-				printf(" %d", i);
-			else if (chooise == 2 && isPrime(i))
-				printf(" %d", i);
-
-			else if (chooise == 1 && isStrong(i))
-				printf(" %d", i);
-		}
-		chooise--;
 	}
-	printf("\n");
-	return 0;
 }
