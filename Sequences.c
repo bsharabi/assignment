@@ -188,5 +188,4 @@ void Anagram(char *txt, char *word)
             count = lengthWord;
         }
     } while ((c = *(txt + i + j)) != '\0' || count == 0);
-    printf("\n");
 }
