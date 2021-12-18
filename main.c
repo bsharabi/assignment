@@ -11,10 +11,10 @@ void menuInput(char* word, char* txt) {
 		txt[i++] = c;
 	txt[i] = '\0';
 	
-    // while(strlen(stdin->_IO_read_ptr)!=0) getchar();
-    // if (strlen(stdin->_IO_read_base)!=0) {
-    //     memset(stdin->_IO_read_base,0,strlen(stdin->_IO_read_base));
-    // }
+    while(strlen(stdin->_IO_read_ptr)!=0) getchar();
+    if (strlen(stdin->_IO_read_base)!=0) {
+        memset(stdin->_IO_read_base,0,strlen(stdin->_IO_read_base));
+    }
     
 }
 int main() {
