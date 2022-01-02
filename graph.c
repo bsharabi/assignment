@@ -395,7 +395,7 @@ void shortsPath_cmd(pnode *head)
     {
         if (tempHead->id == dest)
         {
-            printf("Dijsktra shortest path: %d\n", (tempHead->distance) < MAX_INT ? (tempHead->distance) : -1);
+            printf("Dijsktra shortest path: %d \n", (tempHead->distance) < MAX_INT ? (tempHead->distance) : -1);
             break;
         }
         tempHead = tempHead->next;
@@ -423,7 +423,7 @@ void TSP_cmd(pnode *head)
     {
         free(cities);
         cities = NULL;
-        printf("TSP shortest path: 0\n");
+        printf("TSP shortest path: 0 \n");
         return;
     }
     int minDistance = MAX_INT;
@@ -570,9 +570,9 @@ void TSP_cmd(pnode *head)
     free(permute);
     permute = NULL;
     if (minDistance < MAX_INT)
-        printf("TSP shortest path: %d\n", minDistance);
+        printf("TSP shortest path: %d \n", minDistance);
     else
-        printf("TSP shortest path: -1\n");
+        printf("TSP shortest path: -1 \n");
     if (ch == ' ')
         ch = getchar();
 }
