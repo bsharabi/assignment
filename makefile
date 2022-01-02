@@ -1,24 +1,28 @@
 FLAGS =-Wall -g
 CC = gcc #if we want to change compiler
 
-all: stringProg
+all: graph 
 
-stringProg:main.o libclass.a 
-	$(CC) $(FLAGS) -o stringProg main.o libclass.a
+graph:main.o libclass.a
+	$(CC) $(FLAGS) -o graph main.o graph.o minHeap.o
 
-main.o: main.c sequences.h
+main.o: main.c graph.h
 	$(CC) $(FLAGS) -c main.c 
 
-libclass.a:Sequences.o
-	ar -rcs libclass.a Sequences.o
+libclass.a:minHeap.o graph.o
+	ar -rcs libclass.a minHeap.o graph.o
+
+graph.o: graph.c graph.h 
+	$(CC) $(FLAGS) -c graph.c 
+
+minHeap.o: minHeap.c minHeap.h 
+	$(CC) $(FLAGS) -c minHeap.c 
 
 
-Sequences.o: Sequences.c sequences.h
-	$(CC) $(FLAGS) -c Sequences.c 	
 
 
 .PHONY: clean
 clean:
-	rm -f *.o *.a *.so stringProg
+	rm -f *.o *.a *.so graph
 run:
-	./stringProg
+	./graph

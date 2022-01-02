@@ -1,27 +1,39 @@
-#include "sequences.h"
-void menuInput(char* word, char* txt) {
-	int i = 0;
-	char c = 0;
-	while ((c = getchar()) != ' ' && (c != '\t') && (c != '\n'))
-		word[i++] = c;
-	word[i] = '\0';
-
-	i = 0;c = 0;
-	while ((c = getchar()) != '~')
-		txt[i++] = c;
-	txt[i] = '\0';  
-}
-int main() {
-	char* word = (char*)malloc(WORD * sizeof(char));
-	char* txt = (char*)malloc(TXT * sizeof(char));
-	menuInput(word, txt);
-	printf("Gematria Sequences: ");
-	Gematria(txt, word);
-	printf("Atbash Sequences: ");
-	Atbash(txt, word);
-	printf("Anagram Sequences: ");
-	Anagram(txt, word);
-	free(word);
-	free(txt);
-	return 0;
+#include "graph.h"
+int main()
+{
+    while (ch != '\n')
+    {
+        switch (ch)
+        {
+        case 'A':
+            ch = getchar();
+            v_size = 0;
+            e_size = 0;
+            scanf("%d", &v_size);
+            build_graph_cmd(&head);
+            // printGraph_cmd(&head);
+            break;
+        case 'B':
+            insert_node_cmd(&head);
+            // printGraph_cmd(&head);
+            break;
+        case 'D':
+            delete_node_cmd(&head);
+            // printGraph_cmd(&head);
+            break;
+        case 'T':
+            TSP_cmd(&head);
+            break;
+        case 'S':
+            shortsPath_cmd(&head);
+            break;
+        }
+        if (isalpha(ch))
+            continue;
+        if (ch == '\n')
+            break;
+        ch = getchar();
+    }
+    deleteGraph_cmd(&head);
+    return 0;
 }
